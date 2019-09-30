@@ -1,0 +1,29 @@
+﻿@model MvcCheckBoxProject.ViewModel.FruitList
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+
+
+    @using (Html.BeginForm("Index", "Home"))
+    {
+        for (int i = 0; i < Model.fruits.Count; i++)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBoxFor(m => Model.fruits[i].isCheck)
+                    @Model.fruits[i].fruitName
+                    @Html.HiddenFor(m => Model.fruits[i].fruitId)
+                    @Html.HiddenFor(m => Model.fruits[i].fruitName)
+                </td>
+            </tr>
+        }
+
+        <input type="submit" value="Submit" />
+    }
+</table>
+<p>@ViewBag.selectFruit</p>
